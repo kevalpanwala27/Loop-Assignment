@@ -1,0 +1,5 @@
+/node_modules
+/data/store_status.csv
+/data/menu_hours.csv
+/data/timezones.csv
+/database.sqlite
