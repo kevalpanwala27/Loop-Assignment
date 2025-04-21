@@ -2,14 +2,14 @@
 
 A Node.js powered REST API that monitors store online/offline status and generates detailed reports on uptime and downtime — accurately handling business hours and timezone-specific logic.
 
-## 🚀 Features
+## Features
 
 - **CSV-based Data Ingestion**: Import store status, business hours, and timezone data from CSV files.
 - **Uptime/Downtime Report Generation**: Calculates store availability metrics — filtered by business hours and timezone.
 - **Real-time Report Status**: Trigger reports asynchronously and poll for completion.
 - **Timezone-Aware Calculations**: Automatically converts timestamps to store-local time for accuracy.
 
-## 🛠 Tech Stack
+## Tech Stack
 
 - **Node.js & Express.js**: REST API
 - **Sequelize ORM**: Database models & query abstraction
@@ -17,7 +17,7 @@ A Node.js powered REST API that monitors store online/offline status and generat
 - **CSV Parser/Writers**: Efficient CSV file reading and writing
 - **Moment-Timezone**: Timezone handling & conversion
 
-## 📁 CSV Data Files
+## CSV Data Files
 
 Place the following files in the `/data` directory:
 
@@ -27,7 +27,7 @@ Place the following files in the `/data` directory:
 | `menu_hours.csv`   | Weekly business hours per store                  |
 | `timezone.csv`     | Timezone info mapped to each store               |
 
-## 📦 Installation
+## Installation
 
 ### Clone the repository:
 
@@ -52,9 +52,9 @@ Place store_status.csv, menu_hours.csv, and timezone.csv into the /data director
 npm start
 ```
 
-## 🔌 API Endpoints
+## API Endpoints
 
-### 📍 Trigger Report Generation
+### Trigger Report Generation
 
 **POST** /api/trigger_report
 
@@ -66,7 +66,7 @@ npm start
 }
 ```
 
-## 📄 Get Report Status / Download Report
+## Get Report Status / Download Report
 
 **GET** /api/get_report/:reportId
 
@@ -84,17 +84,17 @@ npm start
 store_id,uptime_last_hour(mins),uptime_last_day(hrs),uptime_last_week(hrs),downtime_last_hour(mins),downtime_last_day(hrs),downtime_last_week(hrs)
 ```
 
-## ⚙️ How It Works
+## How It Works
 
-CSV data is ingested into a SQLite database.
-When a report is triggered:
-Status logs are analyzed per store.
-Uptime/downtime is calculated across various windows: last hour, day, week.
-Only business hours (from menu_hours.csv) are considered.
-All timestamps are converted based on the store's timezone (timezone.csv).
-A downloadable report is generated and stored locally.
+- CSV data is ingested into a SQLite database.
+- When a report is triggered:
+  - Status logs are analyzed per store.
+  - Uptime/downtime is calculated across various windows: last hour, day, week.
+  - Only business hours (from menu_hours.csv) are considered.
+  - All timestamps are converted based on the store's timezone (timezone.csv).
+  - A downloadable report is generated and stored locally.
 
-## ✅ Example Report Output
+## Example Report Output
 
 ```
 store_id,uptime_last_hour(in minutes),uptime_last_day(in hours),uptime_last_week(in hours),downtime_last_hour(in minutes),downtime_last_day(in hours),downtime_last_week(in hours)
